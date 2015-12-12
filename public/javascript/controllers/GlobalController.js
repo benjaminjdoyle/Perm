@@ -2,8 +2,8 @@
 	'use strict';
 	angular.module('app')
 	.controller('GlobalController', GlobalController)
-	.controller('DialogueController', DialogueController)
-	//.controller('LoginDialogueController', LoginDialogueController)
+	.controller('DialogController', DialogController)
+	.controller('LoginDialogController', LoginDialogController)
 
 	function GlobalController(UserFactory, $state, $mdToast, $mdDialog) {
 		var vm = this;
@@ -13,7 +13,7 @@
 
 		vm.openRegisterModal = function(ev) {
 			$mdDialog.show({
-				controller: DialogueController,
+				controller: DialogController,
 				templateUrl: '/templates/partials/registerModal.templ.html',
 				parent: angular.element(document.body),
 				targetEvent: ev,
@@ -43,6 +43,21 @@
 			});
 		}
 
+		vm.openLoginModal = function(ev) {
+			$mdDialog.show({
+				controller: LoginDialogController,
+				templateUrl: '/templates/partials/loginModal.templ.html',
+				parent: angular.element(document.body),
+				targetEvent: ev,
+				clickOutsideToClose: true
+			})
+			.then(function(user) {
+				UserFactory.login(user).then(function(res) {
+					$state.go('Home');
+				});
+			});
+		}
+
 		
 
 		vm.logout = UserFactory.removeToken;
@@ -50,12 +65,21 @@
 		//vm.login = function()..................
 	}
 
-	function DialogueController($scope, $mdDialog) {
-			$scope.register = function() {
-				$mdDialog.hide($scope.user);
-			};
-			$scope.cancel = function() {
-				$mdDialog.cancel();
-			};
+	function DialogController($scope, $mdDialog) {
+		$scope.register = function() {
+			$mdDialog.hide($scope.user);
 		};
+		$scope.cancel = function() {
+			$mdDialog.cancel();
+		};
+	};
+
+	function LoginDialogController($scope, $mdDialog) {
+		$scope.login = function() {
+			$mdDialog.hide($scope.user);
+		};
+		$scope.cancel = function() {
+			$mdDialog.cancel();
+		};
+	};
 })();

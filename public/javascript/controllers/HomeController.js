@@ -2,7 +2,7 @@
 	'use strict';
 	angular.module('app')
 	.controller('HomeController', HomeController)
-	//.controller('HomeDialgoueController', HomeDialogueController)
+	//.controller('HomeDialogController', HomeDialogController)
 
 
 	function HomeController(UserFactory, HomeFactory, $state, $stateParams, $scope, $mdToast, $mdDialog) {
