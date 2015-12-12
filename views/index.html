@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>indy-proj</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/site.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"> -->
+
+
+</head>
+<body ng-controller='GlobalController as global'>
+	
+	<md-toolbar layout>
+		<div class='toolbarStyle' layout layout-align='end center'>
+			<md-button ng-click='global.openRegisterModal($event)'>Register</md-button>
+		</div>
+	</md-toolbar>
+	    
+
+
+
+
+
+	<ui-view></ui-view>
+	<!-- Ext Libs -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
+	
+	<!-- Modules -->
+	<script src="/javascript/app.js"></script>
+	
+	<!-- Services -->
+	<script src="/javascript/services/HomeFactory.js"></script>
+	<script src="/javascript/services/UserFactory.js"></script>
+	<script src="/javascript/services/ProspectiveEmployerFactory.js"></script>
+
+	<!-- Controllers -->
+	<script src="/javascript/controllers/GlobalController.js"></script>
+	<script src="/javascript/controllers/HomeController.js"></script>
+	<script src="/javascript/controllers/CreateProspectiveEmployerController.js"></script>
+	<!--<script src="/javascript/controllers/UpdateProspectiveEmployerController.js"></script>-->
+	
+
+
+</body>
+</html>
