@@ -16,6 +16,7 @@ let auth = jwt({
 router.post('/register', (req, res, next) => {
 	if (!req.body.email || !req.body.password) return next('Include an email and password.');
 	let user = new User();
+	user.local.username = req.body.username;
 	user.local.email = req.body.email;
 	user.CreateHash(req.body.password, (err, hash) => {
 		if (err) return next(err);

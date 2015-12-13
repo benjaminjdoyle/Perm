@@ -14,7 +14,8 @@
 	
 	<md-toolbar layout layout-align='end center'>
 		<div class='toolbarStyle' justify-content=space-around>
-			<h1>Hi!<h1>
+			<h2 ng-show='!global.status._id'>Welcome to Perm!<h2>
+			<h2 ng-show='global.status._id'>Hi {{global.status.username}}.</h2>
 		</div>
 		<span flex></span>
 		<div class='toolbarStyle' layout ng-show='!global.status._id'>

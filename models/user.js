@@ -17,7 +17,7 @@ let UserSchema = new mongoose.Schema({
   },
   backgroundPicUrl: String,
   // : { type: String, enum: ['option-1', 'option-2', 'option-3']}, what does enum do?
-  prospectiveEmployers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Prospect' }]
+  prospects: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Prospect' }]
 });
 
 UserSchema.methods.CreateHash = function(password, cb) {
@@ -42,6 +42,7 @@ UserSchema.methods.validatePassword = function(password, hash, cb) {
 UserSchema.methods.generateJWT = function() {
 	return jwt.sign({
 		_id: this._id,
+		username: this.local.username,
 		email: this.local.email
 	}, 'super secret salt');
 };
