@@ -3,7 +3,7 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 let passport = require('passport');
-// let Prospect = mongoose.model('Prospect');
+let Prospect = mongoose.model('Prospect');
 let User = mongoose.model('User');
 let jwt = require ('express-jwt');
 let auth = jwt({
@@ -11,6 +11,15 @@ let auth = jwt({
 	secret: 'super secret salt'
 });
 
+// GET /api/v1/users/profile
+router.get('/profile/', auth, (req, res, next) => {
+	Prospect.find({ createdBy : req.payload._id})
+	.sort('-dateCreated')
+	.exec((err, result) => {
+		if(err) return next(err);
+		res.send(result);
+	});
+});
 
 // POST /api/v1/users/register
 router.post('/register', (req, res, next) => {

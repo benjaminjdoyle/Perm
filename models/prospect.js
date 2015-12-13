@@ -18,6 +18,7 @@ let ProspectSchema = new mongoose.Schema({
 	},
 	nextStep: String,
 	notes: String,
-	dateCreated: { type: Date, default: Date.now }
+	dateCreated: { type: Date, default: Date.now },
+	createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
 module.exports = mongoose.model('Prospect', ProspectSchema);

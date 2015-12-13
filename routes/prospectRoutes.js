@@ -22,7 +22,7 @@ router.get('/', auth, (req, res, next) => {
 router.post('/', auth, (req, res, next) => {
 	if(!req.body.name) return next('Please include a prospective employer');
 	let prospect = new Prospect(req.body);
-	// prospect.createdBy = req.payload._id;
+	prospect.createdBy = req.payload._id;
 	prospect.name = req.body.name;
 	prospect.save((err, result) => {
 		if(err) return next(err);

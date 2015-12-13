@@ -15,6 +15,10 @@
 			vm.prospects = res;
 		});
 		
+		UserFactory.getProfileProspects().then(function(res) {
+			vm.profileProspects = res;
+		});
+
 		vm.createProspect = function() {
 			if(!vm.prospect.name){
 				$mdToast.show(
@@ -26,10 +30,10 @@
 			}
 				HomeFactory.createProspect(vm.prospect).then(function(res) {
 					$state.go('Home');
-					//res.createdBy = {};
-	    			//res.createdBy._id = UserFactory.status._id;
-	    			//res.createdBy.username = UserFactory.status.username;
-	    			//vm.prospects.unshift(res);
+					// res.createdBy = {};
+	    			// res.createdBy._id = UserFactory.status._id;
+	    			// res.createdBy.username = UserFactory.status.username;
+	    			vm.profileProspects.unshift(vm.prospect);
 	    			vm.prospect = {};
 	    			$mdToast.show(
 	    				$mdToast.simple()
