@@ -23,12 +23,6 @@
 			.then(function(user) {
 				UserFactory.register(user).then(function(res) {
 					
-					// $mdToast.show(
-					// 	$mdToast.simple()
-					// 		.content('Welcome to Perm!')
-					// 		.position('bottom right')
-					// 		.hideDelay(2000)
-					// );
 					$state.go('Home');
 				} 
 				// function(err) {
@@ -62,7 +56,6 @@
 
 		vm.logout = UserFactory.removeToken;
 
-		//vm.login = function()..................
 	}
 
 	function DialogController($scope, $mdDialog) {

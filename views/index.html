@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
-	<title>indy-proj</title>
+	<title>Perm Jobhunt Wingman</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
-    <!-- <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"> -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
 	<link rel="shortcut icon" href="/assets/favicon.ico" >
    	<link rel="icon" type="image/gif" href="/assets/animated_favicon1.gif" >
 
 </head>
 <body ng-controller='GlobalController as global'>
 	
-	<md-toolbar layout>
-		<div class='toolbarStyle' layout layout-align='end center' ng-show='!global.status._id'>
+	<md-toolbar layout layout-align='end center'>
+		<div class='toolbarStyle' justify-content=space-around>
+			<h1>Hi!<h1>
+		</div>
+		<span flex></span>
+		<div class='toolbarStyle' layout ng-show='!global.status._id'>
 			<md-button ng-click='global.openRegisterModal($event)'>Register</md-button>
 			<md-button ng-click='global.openLoginModal($event)'>Login</md-button>
 		</div>
-		<div class='toolbarStyle' layout layout-align='end center' ng-show='global.status._id'>
+		<div class='toolbarStyle' layout ng-show='global.status._id'>
 			<md-button ui-sref='Home'>Home</md-button>
 			<md-button ng-click='global.logout()'>Logout</md-button>
 		</div>
@@ -37,12 +41,11 @@
 	<!-- Services -->
 	<script src="/javascript/services/HomeFactory.js"></script>
 	<script src="/javascript/services/UserFactory.js"></script>
-	<script src="/javascript/services/ProspectiveEmployerFactory.js"></script>
+	
 
 	<!-- Controllers -->
 	<script src="/javascript/controllers/GlobalController.js"></script>
 	<script src="/javascript/controllers/HomeController.js"></script>
-	<script src="/javascript/controllers/CreateProspectiveEmployerController.js"></script>
 	<!--<script src="/javascript/controllers/UpdateProspectiveEmployerController.js"></script>-->
 	
 

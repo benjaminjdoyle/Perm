@@ -3,10 +3,10 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let app = express();
 let port = process.env.PORT || 3000;
-let passport = require('passport');
 let mongoose = require('mongoose');
+let passport = require('passport');
 require('./models/user');
-//require('./models/prospectiveEmployer');
+require('./models/prospect');
 require('./config/passport');
 if(process.env.NODE_ENV === 'test') mongoose.connect('mongodb://localhost/indyproj-test')
 else mongoose.connect('mongodb://localhost/indyproj');
@@ -25,16 +25,16 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 let userRoutes = require('./routes/userRoutes');
-//let prospectiveEmployerRoutes = require('./routes/prospectiveEmployerRoutes');
+let prospectRoutes = require('./routes/prospectRoutes');
 
 app.get('/', function(req, res) {
 	res.render('index');
 });
 
 app.use('/api/v1/users', userRoutes);
-// app.use('/api/v1/prospects', prospectiveEmployerRoutes);
+app.use('/api/v1/prospects', prospectRoutes);
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
 	if(process.env.NODE_ENV !== 'test') {console.log(err);}
 	res.status(500).send(err);
 });

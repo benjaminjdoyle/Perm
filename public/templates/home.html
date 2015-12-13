@@ -1,1 +1,54 @@
-<h1>{{vm.title}}</h1>
+<md-content>
+    <div layout='column' ng-show='global.status._id'>
+		<br>
+		<form ng-submit='vm.createProspect()' layout-padding flex>
+			<md-input-container flex>
+				<label>Enter Name of Prospective Employer</label>
+				<input type='text' ng-model='vm.prospect.name' />
+			</md-input-container>
+			<br>
+			<div layout='row'>
+				<md-input-container flex='33'>
+					<label>Contact Person</label>
+					<input type='text' ng-model='vm.prospect.contact.name'>
+				</md-input-container>
+				<md-input-container flex='33'>
+					<label>Enter contact email</label>
+					<input type='email' ng-model='vm.prospect.contact.email'>
+				</md-input-container> 
+				<md-input-container flex='33'>
+					<label>Enter contact phone number</label>
+					<input type='tel' ng-model='vm.prospect.contact.phone'>
+				</md-input-container>
+			</div>
+			<md-input-container>
+				<label>Next Step</label>
+				<input type='text' ng-model='vm.prospect.nextStep'>
+			</md-input-container>
+			<md-input-container>
+				<label>Notes</label>
+				<input type='text' ng-model='vm.prospect.notes'>
+			</md-input-container>
+			<md-button type='submit' flex>Submit</md-button>
+		</form>	
+    </div>
+	<md-divider md-inset />
+	<div ng-cloak layout layout="column" layout-align="center" ng-show="global.status._id">
+        <div layout="row" layout-wrap>
+            <div ng-repeat="p in vm.prospects" layout="column" class="md-padding" layout-align="center" flex-gt-md="33" flex-gt-sm="50" flex-sm="100"> 
+                    <md-card>
+                        <md-card-content  layout="column" layout-align="space-between" >
+							<h2> Prospect Name: {{p.name}}</h2>
+							<h4> Contact: {{p.contact.name}}</h4>
+							<h4> {{p.contact.name}}'s email: {{p.contact.email}}</h4>
+							<h4> {{p.contact.name}} phone number: {{p.contact.phone}}</h4>
+
+                        </md-card-content>
+                    </md-card>
+            </div>
+        </div>
+    </div>
+    <md-divider md-inset />
+
+
+</md-content>
