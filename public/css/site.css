@@ -1,0 +1,88 @@
+body {
+	font-family: courier;
+    font-weight: 300;
+    background-color:rgba(0,0,0,1);
+}
+.material-icons.red {
+	color: red;
+}
+.material-icons.green {
+	color: green;
+}
+md-toolbar h2 {cursor: pointer;}
+
+md-card {
+	width: 90vw;
+    padding: 0 50px 50px 50px;
+    margin-top: 50px;
+}
+
+.top-right-button {
+    margin-top: 35px;
+}
+
+md-content p {
+	text-align: center;
+}
+
+.button-padding {padding-top: 18px;}
+
+#background-container {
+  position: relative;
+  height: 10vh;
+  width: 100vw;
+  overflow: hidden; 
+  opacity: 0.6; 
+}
+#background2 {
+	background-image: url('http://cdno2.gettingsmart.com/wp-content/uploads/2014/06/SF-Golden-Gate.jpg') ;
+    content: ' ';
+    display: block;
+    position: fixed;
+    /*background-color:rgba(255,0,0,0.5);*/
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.2;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+#background1 {
+  background-image: url('http://cdno2.gettingsmart.com/wp-content/uploads/2014/06/SF-Golden-Gate.jpg') ;
+    content: ' ';
+    display: block;
+    position: fixed;
+    /*background-color:rgba(255,0,0,0.5);*/
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.8;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#topform {
+	background-color:  background: #EEEEEE;
+}
+
+.Hello {
+	white-space: nowrap;
+}

@@ -1,7 +1,18 @@
-<md-content>
-    <div layout='column' ng-show='global.status._id'>
+
+
+<md-content ng-cloak>
+
+	<div id='background-container'>
+		<h1 layout layout-align='center center' ng-show=!global.status._id>Register for Free to Track Your Job Prospects!</h1>
+		<h1 layout layout-align='center center' ng-show=global.status._id>Create a New Prospective Employer!</h1>
+		<div id='background1' ng-show='!global.status._id'></div>
+		<div id='background2' ng-show='global.status._id'></div>
+	</div>
+    <div id='topform' layout='column' ng-show='global.status._id'>
+		<div layout layout-align='center'>
+		</div>
 		<br>
-		<form ng-submit='vm.createProspect()' layout-padding flex>
+		<form ng-submit='vm.createProspect()' ng-show='!vm.isEditing' layout-padding flex>
 			<md-input-container flex>
 				<label>Enter Name of Prospective Employer</label>
 				<input type='text' ng-model='vm.prospect.name' />
@@ -29,20 +40,47 @@
 				<label>Notes</label>
 				<input type='text' ng-model='vm.prospect.notes'>
 			</md-input-container>
-			<md-button type='submit' flex>Submit</md-button>
+			<div layout layout-align='center end'>
+			<md-button class='md-raised md-warn' type='submit'>Submit</md-button>
+			</div>
 		</form>	
     </div>
-	<md-divider md-inset />
-	<div ng-cloak layout layout="column" layout-align="center" ng-show="global.status._id">
-        <div layout="row" layout-wrap>
-            <div ng-repeat="p in vm.profileProspects" layout="column" class="md-padding" layout-align="center" flex-gt-md="33" flex-gt-sm="50" flex-sm="100"> 
-                    <md-card>
-                        <md-card-content  layout="column" layout-align="space-between" >
-							<h2> Prospect Name: {{p.name}}</h2>
-							<h4> Contact: {{p.contact.name}}</h4>
-							<h4> {{p.contact.name}}'s email: {{p.contact.email}}</h4>
-							<h4> {{p.contact.name}}'s phone number: {{p.contact.phone}}</h4>
+    
 
+
+</md-content>
+
+	<md-divider md-inset />	<div ng-cloak layout layout="row" layout-align="start" ng-show="global.status._id">
+        <div layout="row" layout-wrap>
+            <div ng-repeat="p in vm.profileProspects" layout="row" class="md-padding" layout-align="start" flex="100"> 
+                    <md-card >
+                        <md-card-content  layout="column" layout-align="space-between" >
+							<div layout='column'>
+								<h2> Prospect Name:&nbsp; {{p.name}}</h2>
+								<div layout='row' layout-align='space-around'>
+									<!-- <div layout='column' layout-align='center'> -->
+										<h3 class='md-title'> <u>Contact:</u></h3><h4 class='md-subhead'> {{p.contact.name}}</h4>
+									&nbsp;&nbsp;
+									<!-- <div layout='column'> -->
+										<h3 class='md-title'> <u>{{p.contact.name}}'s email:</u> </h3><h4 class='md-subhead'> {{p.contact.email}}</h4>
+									&nbsp;&nbsp;
+									<!-- <div layout='column'> -->
+										<h3 class='md-title'> <u>{{p.contact.name}}'s phone number:</u></h3><h4 class='md-subhead'>{{p.contact.phone}}</h4>
+									
+								</div>
+								<div layout='row' layout-align='space-around'>
+									<div layout='column'><h3 class='md-title'><u>Next Step: </u></h3><h4 class='md-subhead'>{{p.nextStep}}</h4>
+									</div>
+									<div layout='column'>
+									<h3 class='md-title'><u>Notes:</u> </h3><h4 class='md-subhead'>{{p.notes}}</h4>
+									</div>
+								</div>
+							</div>
+							<div layout layout-align='center end'>
+								<span></span>
+								<md-button class='md-mini' aria-label='Delete' ng-click='vm.deleteProspect(p)'><i class="material-icons md-48 red">remove_circle</i><md-tooltip>Delete</md-tooltip></ng-md-icon></md-button>
+								<md-button aria-label='Edit' ng-click='vm.openEditModal($event, p)'><i class="material-icons md-48 green">edit</i><md-tooltip>Edit</md-tooltip></ng-md-icon></md-button>
+                        	</div>
                         </md-card-content>
                     </md-card>
             </div>

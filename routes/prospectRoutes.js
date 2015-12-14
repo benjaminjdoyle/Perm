@@ -10,6 +10,32 @@ let auth = jwt({
 	secret: 'super secret salt'
 });
 
+router.delete('/:id', (req, res, next) => {
+	Prospect.remove({
+		_id: req.params.id
+	}, (err, result) => {
+		if(err) return next(err);
+		User.findOneAndUpdate({
+			'prospects': req.params.id
+		}, {
+			$pull: {
+				prospects: req.params.id
+			}
+		}, (err, result) => {
+			if(err) return next(err);
+			res.send(result);
+		});
+	});
+});
+
+router.put('/:id', (req, res, next) => {
+	Prospect.update({ _id : req.params.id }, req.body, function(err, result) {
+		if(err) return next(err);
+		if(!result) return next('Prospect not found!');
+		res.send(result);
+	});
+});
+
 router.get('/', auth, (req, res, next) => {
 	Prospect.find({})
 		// .sort('-dateCreated')

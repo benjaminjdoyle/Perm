@@ -4,20 +4,25 @@
 	<title>Perm Jobhunt Wingman</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    
 	<link rel="shortcut icon" href="/assets/favicon.ico" >
    	<link rel="icon" type="image/gif" href="/assets/animated_favicon1.gif" >
 
 </head>
-<body ng-controller='GlobalController as global'>
+<body ng-controller='GlobalController as global' ng-cloak>
 	
 	<md-toolbar layout layout-align='end center'>
-		<div class='toolbarStyle' justify-content=space-around>
-			<h2 ng-show='!global.status._id'>Welcome to Perm!<h2>
-			<h2 ng-show='global.status._id'>Hi {{global.status.username}}.</h2>
+		<div layout justify-content='start center' class='toolbarStyle'>
+			<span flex='10'></span>
+			<h2 class='Hello' ng-show='!global.status._id'>Welcome to Perm!<h2>
+			<h2 class='Hello' ng-show='global.status._id'>Hello {{global.status.username}}!</h2>
 		</div>
 		<span flex></span>
+		<!-- <span ng-show='!global.status._id' flex='30'></span>
+		<span ng-show='global.status._id' flex='40'></span> -->
 		<div class='toolbarStyle' layout ng-show='!global.status._id'>
 			<md-button ng-click='global.openRegisterModal($event)'>Register</md-button>
 			<md-button ng-click='global.openLoginModal($event)'>Login</md-button>
@@ -28,6 +33,7 @@
 		</div>
 
 	</md-toolbar>
+
 	<ui-view></ui-view>
 	<!-- Ext Libs -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
@@ -35,6 +41,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.6.0/angular-material-icons.min.js"></script>
 	
 	<!-- Modules -->
 	<script src="/javascript/app.js"></script>
@@ -47,7 +54,6 @@
 	<!-- Controllers -->
 	<script src="/javascript/controllers/GlobalController.js"></script>
 	<script src="/javascript/controllers/HomeController.js"></script>
-	<!--<script src="/javascript/controllers/UpdateProspectiveEmployerController.js"></script>-->
 	
 
 

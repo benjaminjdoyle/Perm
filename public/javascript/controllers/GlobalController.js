@@ -47,14 +47,36 @@
 			})
 			.then(function(user) {
 				UserFactory.login(user).then(function(res) {
+					$mdToast.show(
+                    $mdToast.simple()
+                        .content('Logged in!')
+                        .position('bottom right')
+                        .hideDelay(2000)
+                	);
 					$state.go('Home');
+				}, function(err) {
+	                $mdToast.show(
+	                    $mdToast.simple()
+	                        .content('Unable to login. Please try again.')
+	                        .position('bottom right')
+	                        .hideDelay(2000)
+	                );
 				});
 			});
 		}
 
 		
 
-		vm.logout = UserFactory.removeToken;
+		vm.logout = function() {
+            $mdToast.show(
+                $mdToast.simple()
+                    .content('Logged out.')
+                    .position('bottom right')
+                    .hideDelay(2000)
+            );
+			UserFactory.removeToken();
+			$state.go('Home');
+		};
 
 	}
 

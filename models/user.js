@@ -15,6 +15,7 @@ let UserSchema = new mongoose.Schema({
   		},
   	password: String
   },
+  admin: Boolean,
   backgroundPicUrl: String,
   // : { type: String, enum: ['option-1', 'option-2', 'option-3']}, what does enum do?
   prospects: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Prospect' }]

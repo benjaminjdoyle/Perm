@@ -30,7 +30,22 @@
 			return q.promise;
 		};
 
-		
+		o.deleteProspect = function(id) {
+			var q = $q.defer();
+			$http.delete('/api/v1/prospects/' + id).then(function(res) {
+				q.resolve(res.data);
+			});
+			return q.promise;
+		};
+
+		o.updateProspect = function(newProspect, oldProspect) {
+			var q = $q.defer();
+			$http.put('/api/v1/prospects/' + oldProspect._id, newProspect).then(function(res) {
+				q.resolve(res.data);
+			});
+			return q.promise;
+		};
+
 		return o;
 	}
 })();

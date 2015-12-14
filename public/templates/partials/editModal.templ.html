@@ -1,0 +1,43 @@
+<md-dialog style='width: 75%; text-align:center !important;' ng-cloak>
+	<md-toolbar>
+		<div class='md-toolbar-tools'>
+			<span flex> </span>
+			<h2>Update your {{prospect.name}} details!</h2>
+			<span flex> </span>
+			<md-button aria-label='Cancel' ng-click='cancel()'><i class="material-icons">cancel</i><md-tooltip>Cancel</md-tooltip></ng-md-icon></md-button>
+
+		</div>
+	</md-toolbar>
+	<md-dialog-content>
+		<div class='md-dialog-content'>
+			<md-content>
+				<form ng-submit='updateProspect()' layout-padding flex>
+			<!-- <md-input-container flex>
+				<label>Enter Name of Prospective Employer</label>
+				<input type='text' ng-model='prospect.name' />
+			</md-input-container> -->
+			<br>
+			<div layout='row'>
+				<md-input-container flex='33'>
+					<label>Contact Person</label>
+					<input type='text' ng-model='prospect.contact.name'>
+				</md-input-container>
+				<md-input-container flex='33'>
+					<label>Enter contact email</label>
+					<input type='email' ng-model='prospect.contact.email'>
+				</md-input-container> 
+				<md-input-container flex='33'>
+					<label>Enter contact phone number</label>
+					<input type='tel' ng-model='prospect.contact.phone'>
+				</md-input-container>
+			</div>
+			<md-input-container>
+				<label>Next Step</label>
+				<input type='text' ng-model='prospect.nextStep'>
+			</md-input-container>
+			<md-input-container>
+				<label>Notes</label>
+				<input type='text' ng-model='prospect.notes'>
+			</md-input-container>
+			<md-button type='submit' flex>Update</md-button>
+		</form>
