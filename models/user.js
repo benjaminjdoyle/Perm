@@ -13,9 +13,9 @@ let UserSchema = new mongoose.Schema({
   		trim: true, //what does this do
   		unique: true
   		},
-  	password: String
+  	password: String,
+  	admin: Boolean
   },
-  admin: Boolean,
   backgroundPicUrl: String,
   // : { type: String, enum: ['option-1', 'option-2', 'option-3']}, what does enum do?
   prospects: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Prospect' }]
@@ -44,7 +44,8 @@ UserSchema.methods.generateJWT = function() {
 	return jwt.sign({
 		_id: this._id,
 		username: this.local.username,
-		email: this.local.email
+		email: this.local.email,
+		admin: this.local.admin
 	}, 'super secret salt');
 };
 

@@ -86,3 +86,11 @@ md-content p {
 .Hello {
 	white-space: nowrap;
 }
+
+#adminheader {
+	color: white;
+}
+
+#usercard {
+	margin-left: -170px; 
+}

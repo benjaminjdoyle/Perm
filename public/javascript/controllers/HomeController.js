@@ -8,12 +8,14 @@
 	function HomeController(UserFactory, HomeFactory, $state, $stateParams, $scope, $mdToast, $mdDialog) {
 		var vm = this;
 		vm.prospect = {};
+		vm.profileProspect = {};
 		vm.status = UserFactory.status
 		vm.title = 'Get a Perm!';
 
-		// HomeFactory.getAllProspects().then(function(res) {
-		// 	vm.prospects = res;
-		// });
+
+		HomeFactory.getAllProspects().then(function(res) {
+			vm.prospects = res;
+		});
 		
 		UserFactory.getProfileProspects().then(function(res) {
 			vm.profileProspects = res;
@@ -29,11 +31,11 @@
 				);
 			}
 			HomeFactory.createProspect(vm.prospect).then(function(res) {
-				$state.go('Home');
-				// res.createdBy = {};
-	    		// res.createdBy._id = UserFactory.status._id;
-	    		// res.createdBy.username = UserFactory.status.username;
-	   			vm.profileProspects.unshift(res);
+				// $state.go('Home');
+				res.createdBy = {};
+				res.createdBy._id = UserFactory.status._id;
+				res.createdBy.username = UserFactory.status.username;
+	   			vm.profileProspects.unshift(vm.prospect);
 	    		vm.prospect = {};
 	    		$mdToast.show(
 	    			$mdToast.simple()
@@ -46,6 +48,17 @@
 		};
 		
 		vm.deleteProspect = function(prospect) {
+			vm.prospects.splice(vm.prospects.indexOf(prospect), 1);
+			HomeFactory.deleteProspect(prospect._id).then(function(res) {
+				$mdToast.show(
+					$mdToast.simple()
+					.content('Prospect deleted!')
+					.position('bottom right')
+					.hideDelay(2200)
+				);
+			});
+		};	
+		vm.deleteProfileProspect = function(prospect) {
 			vm.profileProspects.splice(vm.profileProspects.indexOf(prospect), 1);
 			HomeFactory.deleteProspect(prospect._id).then(function(res) {
 				$mdToast.show(
@@ -70,7 +83,7 @@
 			})
 			.then(function(newProspect) {
 				HomeFactory.updateProspect(newProspect, prospect).then(function(res) {
-					vm.prospects[vm.prospects.indexOf(prospect)] = newProspect;
+					vm.prospects[vm.prospects.indexOf(prospect)] = res;
 				});
 			});
 		};

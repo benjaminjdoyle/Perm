@@ -48,7 +48,8 @@
 			$window.localStorage.removeItem('token');
 			o.status._id = null;
 			o.status.email = null;
-			o.status.username = null
+			o.status.username = null;
+			o.status.admin = null;
 		}
 
 		o.setUser = function() {
@@ -56,6 +57,7 @@
 			o.status._id = token._id;
 			o.status.email = token.email;
 			o.status.username = token.username;
+			o.status.admin = token.admin;
 		};
 
 
