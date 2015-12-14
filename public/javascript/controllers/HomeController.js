@@ -88,11 +88,11 @@
 			});
 		};
 
-		vm.startEdit = function(prospect) {
-			vm.isEditing = true;
-			vm.selectedProspect = prospect;
-			vm.editProspect = angular.copy(prospect);
-		};
+		// vm.startEdit = function(prospect) {
+		// 	vm.isEditing = true;
+		// 	vm.selectedProspect = prospect;
+		// 	vm.editProspect = angular.copy(prospect);
+		// };
 
 
 	}; 
